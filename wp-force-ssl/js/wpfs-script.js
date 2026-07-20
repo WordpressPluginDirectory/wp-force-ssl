@@ -1,6 +1,6 @@
 /*
  * WP Force SSL
- * (c) WebFactory Ltd 2019 - 2022
+ * (c) WebFactory Ltd 2019 - 2026
  */
 
 (function ($) {
@@ -428,18 +428,19 @@
 
     $('#wpfssl-pro-dialog').dialog('open');
 
-    $('#wpfssl-pro-table .button-buy').each(function (ind, el) {
+    $('#wpfssl-pro-dialog .button-buy').each(function (ind, el) {
       tmp = $(el).data('href-org');
       tmp = tmp.replace('pricing-table', feature);
       $(el).attr('href', tmp);
     });
   } // open_upsell
 
-  if (window.localStorage.getItem('wpfssl_upsell_shown') != 'true') {
-    open_upsell('welcome');
+  // show upsell popup every 3 months
+  if (window.localStorage.getItem('wpfssl_upsell_timestamp') === null ||
+      (new Date().getTime() / 1000 - window.localStorage.getItem('wpfssl_upsell_timestamp')) > (86400 * 90)) {
+    window.localStorage.setItem('wpfssl_upsell_timestamp', Math.round(new Date().getTime() / 1000));
 
-    window.localStorage.setItem('wpfssl_upsell_shown', 'true');
-    window.localStorage.setItem('wpfssl_upsell_shown_timestamp', new Date().getTime());
+    open_upsell('welcome');
   }
 
   if (window.location.hash == '#open-pro-dialog') {

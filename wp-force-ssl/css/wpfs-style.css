@@ -962,6 +962,17 @@ input:checked ~ .wfssl-accordion-tab-content {
   display: none;
 }
 
+.ui-dialog {
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.ui-dialog .ui-dialog-content {
+    overflow-y: auto !important;
+    flex-grow: 1;
+}
+
 .wpfssl-pro-dialog .logo img {
   max-height: 55px;
 }
@@ -978,6 +989,18 @@ input:checked ~ .wfssl-accordion-tab-content {
   background: #f8f8f8;
   margin: 0 -16px -16px -16px;
   padding: 15px;
+}
+
+.wpfssl-pro-dialog .upsell-footer-2 {
+  padding: 15px;
+  text-align: center;
+  background-color: #42982e;
+  color: white;
+  margin: 0 -16px 0 -16px;
+}
+
+.wpfssl-pro-dialog .upsell-footer-2 a {
+  color: white;
 }
 
 .wpfssl-pro-dialog .logo span {
@@ -1050,7 +1073,7 @@ input:checked ~ .wfssl-accordion-tab-content {
 }
 
 #wpfssl-pro-table tr:last-child td {
-  padding: 20px 0 20px 0;
+  padding: 15px 0 15px 0;
   vertical-align: top;
 }
 
